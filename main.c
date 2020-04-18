@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "avlTree.h"
+#include "hashTchaining.h"
 
 BST_NODE* avl_root;
 
@@ -20,30 +21,50 @@ void test1() {
 
     printf("Inserting %d elements\n------\n", x);
 
-    //AVL tree
+    //AVL tree insert
     start = clock();
     for (int i = 0; i < x; i++)
         avl_root = insert(avl_root, array[i]);
     end = clock();
     time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
-    printf("AVL Insert time is: %gms\n", time_taken);
+    printf("AVL insert time is: %gms\n", time_taken);
+
+    //Hash Table Chaining insert
+    start = clock();
+    for (int i = 0; i < x; i++)
+        hashT_insert(array[i]);
+    end = clock();
+    time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
+    printf("HT-Chaining insert time is: %gms\n", time_taken);
 
     printf("\nSearching %d elements from array\n------\n", x);
 
-    //AVL tree
+    //AVL tree search
     int found = 0;
     start = clock();
     for (int i = 0; i < x; i++)
-        if(search(avl_root, array[i]))
+        if( search(avl_root, array[i]) )
             found++;
     end = clock();
     time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
-    printf("AVL Search time is: %gms\n", time_taken);
-    printf("Found %d elements", found);
+    printf("AVL Search time is: %gms, ", time_taken);
+    printf("found %d elements\n", found);
+
+    //Hash Table Chaining search
+    found = 0;
+    start = clock();
+    for (int i = 0; i < x; i++)
+        if( hashT_search(array[i]) )
+            found++;
+    end = clock();
+    time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
+    printf("HT-Chaining search time is: %gms, ", time_taken);
+    printf("found %d elements", found);
 
 }
 
 int main() {
+    hashT_initialize();
 
     test1();
 
