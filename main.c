@@ -98,7 +98,7 @@ void test2() {
     int x = 1000000;
 
     //fill array of x numbers
-    long long* array = (long long*)malloc(x * sizeof(long));
+    long long* array = (long long*)malloc(x * sizeof(long long));
     srand(time(0));
     for (long long i = 1; i <= x; i++)
         array[i-1] = i*2;
@@ -171,8 +171,8 @@ void test2() {
 int main() {
     hashT_initialize();
 
-    test1();
-    //test2();
+    //test1();
+    test2();
 
     printf("\n");
     return 0;
