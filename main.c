@@ -87,10 +87,55 @@ void test1() {
     printf("found %d elements", found);
 }
 
+void test2() {
+    printf("TEST 2\n=======\n");
+
+    clock_t start, end;
+    double time_taken;
+
+    int x = 1000000;
+
+    //fill array of x numbers
+    int* array = (int*)malloc(x * sizeof(int));
+    srand(time(0));
+    for (int i = 1; i <= x; i++)
+        array[i-1] = i*2;
+
+    printf("Inserting %d elements\n-----------------\n", x);
+
+    //AVL tree insert
+    start = clock();
+    for (int i = 0; i < x; i++)
+        avl_root = insert(avl_root, array[i]);
+    end = clock();
+    time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
+    printf("AVL insert time is: %gms\n", time_taken);
+
+    //Hash Table Chaining insert
+    start = clock();
+    for (int i = 0; i < x; i++)
+        hashT_insert(array[i]);
+    end = clock();
+    time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
+    printf("HT-Chaining insert time is: %gms\n", time_taken);
+    printTableInfo();
+
+    //Red Black Tree insert
+    start = clock();
+    for (int i = 0; i < x; i++)
+        RBinsertion(array[i]);
+    end = clock();
+    time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
+    printf("RB Tree insert time is: %gms\n", time_taken);
+
+    //////////////////////////////////////////////////////////
+}
+
 int main() {
     hashT_initialize();
 
-    test1();
+    //test1();
+    test2();
 
     printf("\n");
     return 0;

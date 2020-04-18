@@ -135,7 +135,7 @@ void hashT_initialize() {
 }
 
 void printTableInfo() {
-    printf("\nLoad factor: %lf\n", hashtable->alpha);
-    printf("Number of collisions: %d\n", hashtable->nOfCollisions);
-    printf("Number of elements: %d\n", hashtable->nOfElements);
+    printf("\tLoad factor: %lf\n", hashtable->alpha);
+    printf("\tNumber of collisions: %d\n", hashtable->nOfCollisions);
+    printf("\tNumber of elements: %d\n", hashtable->nOfElements);
 }
