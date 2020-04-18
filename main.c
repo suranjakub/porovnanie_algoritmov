@@ -10,6 +10,7 @@ BST_NODE* avl_root;
 //struct rbNode *root = NULL;
 
 void test1() {
+    printf("TEST 1\n=======\n");
 
     clock_t start, end;
     double time_taken;
@@ -22,7 +23,7 @@ void test1() {
     for (int i = 0; i < x; i++)
         array[i] = (rand() % (upper - lower + 1)) + lower;
 
-    printf("Inserting %d elements\n------\n", x);
+    printf("Inserting %d elements\n-----------------\n", x);
 
     //AVL tree insert
     start = clock();
@@ -50,7 +51,7 @@ void test1() {
 
     //////////////////////////////////////////////////////////
 
-    printf("\nSearching %d elements from array\n------\n", x);
+    printf("\nSearching %d elements from array\n-----------------\n", x);
 
     //AVL tree search
     int found = 0;
@@ -78,11 +79,12 @@ void test1() {
     found = 0;
     start = clock();
     for (int i = 0; i < x; i++)
-        RBsearchElement(array[i]);
+        if( RBsearchElement(array[i]) )
+            found++;
     end = clock();
     time_taken = (double)(end-start) / CLOCKS_PER_SEC * 1000;
-    printf("\nRB Tree search time is: %gms", time_taken);
-    //printf("found %d elements", found);
+    printf("\nRB Tree search time is: %gms, ", time_taken);
+    printf("found %d elements", found);
 }
 
 int main() {

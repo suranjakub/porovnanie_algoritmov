@@ -15,6 +15,6 @@ struct rbNode {
 struct rbNode * createNode(int data);
 void RBinsertion (int data);
 void RBdeletion(int data);
-void RBsearchElement(int data);
+int RBsearchElement(int data);
 void RBinorderTraversal(struct rbNode *node);
 #endif //ALGORITHMCOMPARE_RBTREE_H

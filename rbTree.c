@@ -403,7 +403,7 @@ void RBdeletion(int data) {
     }
 }
 
-void RBsearchElement(int data) {
+int RBsearchElement(int data) {
     struct rbNode *temp = root;
     int diff;
 
@@ -415,11 +415,11 @@ void RBsearchElement(int data) {
             temp = temp->link[0];
         } else {
             //printf("Search Element Found!!\n");
-            return;
+            return 1;
         }
     }
     //printf("Given Data Not Found in RB Tree!!\n");
-    return;
+    return 0;
 }
 
 void RBinorderTraversal(struct rbNode *node) {
