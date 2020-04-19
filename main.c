@@ -334,6 +334,8 @@ void test4() {
 int main() {
     hashT_initialize();
 
+    //TESTY SPUSTAT PO JEDNOM
+
     //test1();
     //test2();
     //test3();
