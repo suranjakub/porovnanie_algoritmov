@@ -8,7 +8,7 @@ HASHTABLE firstHashTable;
 HASHTABLE* hashtable;
 
 long long hash(long long x) {
-    long long a = 11, b = 13;
+    long long a = 3, b = 19;
     return (a*x + b) % hashtable->size;
 }
 
